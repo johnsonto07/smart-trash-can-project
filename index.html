@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Sorting Trash Can</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h2>SmartBin</h2>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#workflow">Workflow</a></li>
+    <li><a href="#engineering">Engineering</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+  </ul>
+  <button onclick="toggleTheme()">🌙</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Smart Sorting Trash Can</h1>
+  <p>Automated waste classification using AI, hardware, and engineering design</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About the Project</h2>
+  <p>
+    The Smart Sorting Trash Can is an interdisciplinary engineering project designed to reduce recycling contamination by automatically identifying and sorting waste.
+    Using a Raspberry Pi, camera module, and machine learning model, the system classifies items and directs them into the correct bin using a servo mechanism.
+  </p>
+</section>
+
+<!-- WORKFLOW -->
+<section id="workflow">
+  <h2>System Workflow</h2>
+  <ol>
+    <li>Object detected using IR sensor</li>
+    <li>Camera captures image</li>
+    <li>Image sent to ML model (ResNet50)</li>
+    <li>Classification: trash vs recycling</li>
+    <li>Servo tilts platform to correct bin</li>
+  </ol>
+</section>
+
+<!-- ENGINEERING -->
+<section id="engineering">
+  <h2>Engineering Breakdown</h2>
+
+  <div class="card">
+    <h3>Mechanical</h3>
+    <p>Tilting platform and bin design for sorting items.</p>
+  </div>
+
+  <div class="card">
+    <h3>Electrical</h3>
+    <p>Raspberry Pi, sensors, and servo motor integration.</p>
+  </div>
+
+  <div class="card">
+    <h3>Software</h3>
+    <p>Flask server and image classification using machine learning.</p>
+  </div>
+
+  <div class="card">
+    <h3>Chemical Engineering</h3>
+    <p>Odor reduction system using chemical spray design.</p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <h2>Timeline</h2>
+  <ul>
+    <li>Week 1–2: Design + Planning</li>
+    <li>Week 3–5: Build system</li>
+    <li>Week 6–7: Train model</li>
+    <li>Week 8: Testing + Demo</li>
+  </ul>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 SmartBin Project Team</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
