@@ -1,93 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Smart Sorting Trash Can</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Sorting Trash Can Project</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+  <header class="navbar">
+    <div class="logo">SmartBin</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#hardware">Hardware</a></li>
+        <li><a href="#software">Software</a></li>
+        <li><a href="#cad">CAD</a></li>
+        <li><a href="#diagrams">EE Diagrams</a></li>
+        <li><a href="#team">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<!-- NAVBAR -->
-<nav>
-  <h2>SmartBin</h2>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#workflow">Workflow</a></li>
-    <li><a href="#engineering">Engineering</a></li>
-    <li><a href="#timeline">Timeline</a></li>
-  </ul>
-  <button onclick="toggleTheme()">🌙</button>
-</nav>
+  <section id="home" class="hero">
+    <div class="hero-overlay">
+      <div class="hero-text">
+        <h1>Smart Sorting Trash Can</h1>
+        <p>
+          An interdisciplinary engineering project focused on automatically
+          identifying and sorting waste through hardware, software, and system design.
+        </p>
+        <a href="#overview" class="hero-button">View Project</a>
+      </div>
+    </div>
+  </section>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Smart Sorting Trash Can</h1>
-  <p>Automated waste classification using AI, hardware, and engineering design</p>
-</section>
+  <section id="overview" class="section">
+    <div class="container">
+      <h2>Project Overview</h2>
+      <div class="two-column">
+        <div>
+          <p>
+            This section is for a short description of your trash can project.
+            You can explain the purpose of the system, the problem it solves,
+            and the main idea behind how it works.
+          </p>
+          <p>
+            You can also include a short summary of the engineering disciplines involved,
+            such as mechanical design, electrical systems, image classification,
+            and any chemical engineering components.
+          </p>
+        </div>
+        <div class="image-placeholder">
+          <span>Add project photo / prototype image here</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2>About the Project</h2>
-  <p>
-    The Smart Sorting Trash Can is an interdisciplinary engineering project designed to reduce recycling contamination by automatically identifying and sorting waste.
-    Using a Raspberry Pi, camera module, and machine learning model, the system classifies items and directs them into the correct bin using a servo mechanism.
-  </p>
-</section>
+  <section id="hardware" class="section alt-section">
+    <div class="container">
+      <h2>Hardware</h2>
+      <div class="content-grid">
+        <div class="info-card">
+          <h3>Mechanical System</h3>
+          <p>
+            Describe the physical structure of the trash can, sorting mechanism,
+            moving parts, mounting, platform design, and overall assembly.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>Electrical Components</h3>
+          <p>
+            Add information about the Raspberry Pi, sensors, servo motors,
+            wiring, power setup, and any control circuitry here.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>Testing + Integration</h3>
+          <p>
+            Use this section to explain how the hardware components work together
+            and how your team tested the system.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- WORKFLOW -->
-<section id="workflow">
-  <h2>System Workflow</h2>
-  <ol>
-    <li>Object detected using IR sensor</li>
-    <li>Camera captures image</li>
-    <li>Image sent to ML model (ResNet50)</li>
-    <li>Classification: trash vs recycling</li>
-    <li>Servo tilts platform to correct bin</li>
-  </ol>
-</section>
+  <section id="software" class="section">
+    <div class="container">
+      <h2>Software</h2>
+      <div class="content-grid">
+        <div class="info-card">
+          <h3>Image Classification</h3>
+          <p>
+            Explain the machine learning side here, including how images are collected,
+            how the model works, and how classification is used in the project.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>Backend / Control Logic</h3>
+          <p>
+            Describe the logic that connects the sensor input, camera capture,
+            model prediction, and hardware actuation.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>Future Improvements</h3>
+          <p>
+            Add ideas for improving accuracy, speed, usability, or expanding the
+            number of sorting categories.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ENGINEERING -->
-<section id="engineering">
-  <h2>Engineering Breakdown</h2>
+  <section id="cad" class="section alt-section">
+    <div class="container">
+      <h2>CAD Designs</h2>
+      <p class="section-intro">
+        Put your CAD renders, part drawings, or screenshots here.
+      </p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><span>CAD Image 1</span></div>
+        <div class="gallery-item"><span>CAD Image 2</span></div>
+        <div class="gallery-item"><span>CAD Image 3</span></div>
+      </div>
+    </div>
+  </section>
 
-  <div class="card">
-    <h3>Mechanical</h3>
-    <p>Tilting platform and bin design for sorting items.</p>
-  </div>
+  <section id="diagrams" class="section">
+    <div class="container">
+      <h2>EE Diagrams</h2>
+      <p class="section-intro">
+        Put your wiring diagrams, control flow diagrams, or electrical schematics here.
+      </p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><span>Diagram 1</span></div>
+        <div class="gallery-item"><span>Diagram 2</span></div>
+        <div class="gallery-item"><span>Diagram 3</span></div>
+      </div>
+    </div>
+  </section>
 
-  <div class="card">
-    <h3>Electrical</h3>
-    <p>Raspberry Pi, sensors, and servo motor integration.</p>
-  </div>
+  <section id="team" class="section alt-section">
+    <div class="container">
+      <h2>About Us</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo"></div>
+          <h3>Team Member Name</h3>
+          <p>Role / Major</p>
+          <p>
+            Add a short description about this person, their role on the project,
+            and what they contributed.
+          </p>
+        </div>
 
-  <div class="card">
-    <h3>Software</h3>
-    <p>Flask server and image classification using machine learning.</p>
-  </div>
+        <div class="team-card">
+          <div class="team-photo"></div>
+          <h3>Team Member Name</h3>
+          <p>Role / Major</p>
+          <p>
+            Add a short description about this person, their role on the project,
+            and what they contributed.
+          </p>
+        </div>
 
-  <div class="card">
-    <h3>Chemical Engineering</h3>
-    <p>Odor reduction system using chemical spray design.</p>
-  </div>
-</section>
+        <div class="team-card">
+          <div class="team-photo"></div>
+          <h3>Team Member Name</h3>
+          <p>Role / Major</p>
+          <p>
+            Add a short description about this person, their role on the project,
+            and what they contributed.
+          </p>
+        </div>
 
-<!-- TIMELINE -->
-<section id="timeline">
-  <h2>Timeline</h2>
-  <ul>
-    <li>Week 1–2: Design + Planning</li>
-    <li>Week 3–5: Build system</li>
-    <li>Week 6–7: Train model</li>
-    <li>Week 8: Testing + Demo</li>
-  </ul>
-</section>
+        <div class="team-card">
+          <div class="team-photo"></div>
+          <h3>Team Member Name</h3>
+          <p>Role / Major</p>
+          <p>
+            Add a short description about this person, their role on the project,
+            and what they contributed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 SmartBin Project Team</p>
-</footer>
-
-<script src="script.js"></script>
+  <footer class="footer">
+    <p>Smart Sorting Trash Can Project</p>
+    <p>University Engineering Project Website</p>
+  </footer>
 </body>
 </html>
