@@ -1,1 +1,71 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fdf6f9;
+  color: #333;
+}
 
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: #ffd6e0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+/* SECTIONS */
+section {
+  padding: 50px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #ffd6e0;
+}
+
+/* DARK MODE */
+.dark {
+  background: #1a1a1a;
+  color: white;
+}
+
+.dark nav {
+  background: #333;
+}
+
+.dark .card {
+  background: #2a2a2a;
+}
