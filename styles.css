@@ -4,184 +4,185 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: #234030;
-  background-color: #f7fbf7;
+  background-color: #f6fbf6;
+  color: #264233;
   line-height: 1.6;
 }
 
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #e6f2e7;
+  background: #e4f1e4;
+  border-bottom: 1px solid #cfe0cf;
+  padding: 18px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 40px;
-  border-bottom: 1px solid #cfe0d1;
 }
 
-.logo {
+.logo a {
+  text-decoration: none;
+  color: #2c5a3f;
   font-size: 1.4rem;
-  font-weight: 700;
-  color: #2f5a3d;
+  font-weight: bold;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 22px;
   flex-wrap: wrap;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #2f5a3d;
+  color: #2c5a3f;
   font-weight: 500;
-  transition: 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: #6b9b78;
+  color: #6d9b7b;
 }
 
 .hero {
-  height: 85vh;
+  height: 78vh;
   background:
-    linear-gradient(rgba(20, 40, 25, 0.28), rgba(20, 40, 25, 0.28)),
+    linear-gradient(rgba(26, 56, 35, 0.28), rgba(26, 56, 35, 0.28)),
     url("images/team-banner.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.hero-overlay {
-  width: 100%;
-  max-width: 1100px;
   padding: 40px;
 }
 
-.hero-text {
-  background: rgba(245, 251, 245, 0.84);
+.hero-box {
+  background: rgba(247, 252, 247, 0.88);
   padding: 40px;
-  max-width: 620px;
   border-radius: 18px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  max-width: 680px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.hero-text h1 {
+.hero-box h1 {
   font-size: 3rem;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   color: #244432;
 }
 
-.hero-text p {
-  font-size: 1.08rem;
-  margin-bottom: 24px;
-  color: #355643;
+.hero-box p {
+  margin-bottom: 20px;
+  color: #3f5e49;
 }
 
-.hero-button {
+.button {
   display: inline-block;
-  background: #8fbc98;
+  padding: 12px 22px;
+  background: #8db89a;
   color: white;
   text-decoration: none;
-  padding: 12px 22px;
   border-radius: 10px;
   font-weight: 600;
-  transition: 0.2s ease;
 }
 
-.hero-button:hover {
-  background: #79a883;
+.button:hover {
+  background: #78a585;
+}
+
+.page-header {
+  padding: 70px 24px 30px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: #244432;
+  margin-bottom: 12px;
+}
+
+.page-header p {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #4d6956;
 }
 
 .section {
-  padding: 80px 24px;
-}
-
-.alt-section {
-  background: #eef6ef;
-}
-
-.container {
   max-width: 1100px;
   margin: 0 auto;
+  padding: 40px 24px 80px;
 }
 
 .section h2 {
-  font-size: 2rem;
-  margin-bottom: 24px;
-  color: #244432;
-}
-
-.section-intro {
-  margin-bottom: 28px;
-  color: #4b6955;
+  margin-bottom: 20px;
+  color: #2c5a3f;
 }
 
 .two-column {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
+  gap: 30px;
   align-items: center;
 }
 
-.image-placeholder {
-  min-height: 260px;
-  background: #dcebdd;
-  border: 2px dashed #9db8a1;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #52705c;
-  text-align: center;
-  padding: 20px;
-}
-
-.content-grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
 
-.info-card {
+.card {
   background: white;
-  padding: 24px;
+  border: 1px solid #d7e6d7;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-  border: 1px solid #dbe8dd;
+  padding: 24px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
 }
 
-.info-card h3 {
-  margin-bottom: 12px;
-  color: #2f5a3d;
+.card h3 {
+  margin-bottom: 10px;
+  color: #2c5a3f;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.gallery-item {
-  min-height: 220px;
-  background: #dcebdd;
-  border: 2px dashed #9db8a1;
+.placeholder {
+  width: 100%;
+  min-height: 260px;
+  border: 2px dashed #a8bfa9;
+  background: #ddebdd;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #52705c;
+  color: #5a735f;
   text-align: center;
   padding: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.gallery-item {
+  background: white;
+  border: 1px solid #d7e6d7;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.gallery-image {
+  width: 100%;
+  min-height: 280px;
+  border: 2px dashed #a8bfa9;
+  background: #ddebdd;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5a735f;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 14px;
 }
 
 .team-grid {
@@ -192,43 +193,41 @@ body {
 
 .team-card {
   background: white;
-  padding: 24px;
+  border: 1px solid #d7e6d7;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-  border: 1px solid #dbe8dd;
+  padding: 22px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
 }
 
 .team-photo {
   width: 100%;
-  height: 220px;
-  background: #dcebdd;
-  border: 2px dashed #9db8a1;
+  min-height: 220px;
+  border: 2px dashed #a8bfa9;
+  background: #ddebdd;
   border-radius: 14px;
-  margin-bottom: 18px;
-}
-
-.team-card h3 {
-  margin-bottom: 6px;
-  color: #2f5a3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5a735f;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 14px;
 }
 
 .footer {
   text-align: center;
-  padding: 28px 20px;
-  background: #dfeee1;
-  color: #365744;
+  padding: 24px;
+  background: #dceada;
+  color: #3f5e49;
+  margin-top: 40px;
 }
 
 @media (max-width: 900px) {
   .two-column,
-  .content-grid,
+  .card-grid,
   .gallery-grid,
   .team-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hero-text h1 {
-    font-size: 2.3rem;
   }
 
   .navbar {
@@ -237,7 +236,7 @@ body {
     padding: 18px 20px;
   }
 
-  .nav-links {
-    justify-content: center;
+  .hero-box h1 {
+    font-size: 2.2rem;
   }
 }
