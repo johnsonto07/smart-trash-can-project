@@ -46,13 +46,12 @@ body {
 
 .hero {
   height: 78vh;
-  background:
-    linear-gradient(rgba(26, 56, 35, 0.28), rgba(26, 56, 35, 0.28)),
-    url("images/team.jpg") center/cover no-repeat;
+  background-image: url("images/team.jpg");
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
 }
 
 .hero-box {
