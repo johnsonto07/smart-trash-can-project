@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Sorting Trash Can | Chemical</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo"><a href="index.html">SmartBin</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="hardware.html">Hardware</a></li>
+      <li><a href="software.html">Software</a></li>
+      <li><a href="chemical.html">Chemical</a></li>
+    </ul>
+  </header>
+
+  <section class="page-header">
+    <h1>Chemical</h1>
+    <p>
+      This page highlights the chemical engineering aspects of the Smart
+      Sorting Trash Can, including odor control, material considerations, and
+      system-level design choices.
+    </p>
+  </section>
+
+  <section class="split-section">
+    <div class="split-text">
+      <h2>Odor Control Design</h2>
+      <p>
+        Use this section to explain the chemical engineering approach behind
+        reducing unpleasant odors in the trash can. You can describe the idea
+        of using a deodorizing spray or another odor-control system, and how it
+        improves the overall user experience of the design.
+      </p>
+      <p>
+        This is also a good place to discuss why odor control matters in waste
+        management systems and how your team thought about practicality and
+        implementation.
+      </p>
+    </div>
+    <div class="split-image-wrap">
+      <img src="images/chemical1.png" alt="Chemical Design" class="split-image">
+    </div>
+  </section>
+
+  <section class="split-section reverse">
+    <div class="split-image-wrap">
+      <img src="images/chemical2.png" alt="Materials and System Design" class="split-image">
+    </div>
+    <div class="split-text">
+      <h2>Materials and System Considerations</h2>
+      <p>
+        Use this section to describe any material choices, environmental
+        considerations, or chemical-system decisions that supported the overall
+        trash can design. You can discuss compatibility, cleanliness, safety,
+        and how the chemical side connects with the broader engineering system.
+      </p>
+      <p>
+        This section can also be used for future chemical improvements or other
+        ideas your team may want to implement as the project develops.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Smart Sorting Trash Can Project Website</p>
+  </footer>
+</body>
+</html>
