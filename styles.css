@@ -64,7 +64,7 @@ body {
   min-height: 78vh;
   background:
     linear-gradient(rgba(111, 143, 119, 0.18), rgba(111, 143, 119, 0.18)),
-    url("images/team.jpg") center/cover no-repeat;
+    url("team.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
