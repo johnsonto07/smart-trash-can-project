@@ -15,7 +15,6 @@ body {
   line-height: 1.6;
 }
 
-/* NAVBAR */
 .navbar {
   background: #e8f5e9;
   border-bottom: 1px solid #d7e8d8;
@@ -61,7 +60,6 @@ body {
   color: #93b39a;
 }
 
-/* HERO */
 .hero {
   min-height: 78vh;
   background:
@@ -114,7 +112,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* PAGE HEADER */
 .page-header {
   text-align: center;
   padding: 72px 24px 26px;
@@ -133,7 +130,6 @@ body {
   color: #7f9984;
 }
 
-/* GENERAL SECTIONS */
 .section {
   max-width: 1100px;
   margin: 0 auto;
@@ -153,7 +149,6 @@ body {
   align-items: center;
 }
 
-/* PLACEHOLDER */
 .placeholder {
   width: 100%;
   min-height: 260px;
@@ -168,7 +163,6 @@ body {
   padding: 20px;
 }
 
-/* ABOUT TEAM */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -209,7 +203,6 @@ body {
   display: block;
 }
 
-/* HARDWARE SPLIT SECTIONS */
 .split-section {
   max-width: 1100px;
   margin: 0 auto;
@@ -255,38 +248,11 @@ body {
   background: #edf7ee;
 }
 
-/* SOFTWARE CARDS */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.card {
-  background: #ffffff;
-  border: 1px solid #e0eee1;
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 6px 16px rgba(138, 173, 144, 0.08);
-}
-
-.card h3 {
-  color: #6a876f;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.card p {
-  color: #78907d;
-}
-
-/* IMAGES */
 img {
   max-width: 100%;
   display: block;
 }
 
-/* FOOTER */
 .footer {
   text-align: center;
   padding: 24px;
@@ -295,7 +261,6 @@ img {
   margin-top: 40px;
 }
 
-/* MOBILE */
 @media (max-width: 900px) {
   .navbar {
     flex-direction: column;
@@ -312,8 +277,7 @@ img {
   }
 
   .two-column,
-  .split-section,
-  .card-grid {
+  .split-section {
     grid-template-columns: 1fr;
   }
 
