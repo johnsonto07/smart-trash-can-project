@@ -304,3 +304,39 @@ img {
   justify-content: center;
   padding: 40px 24px;
 }
+.process-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 28px;
+}
+
+.process-card {
+  background: #ffffff;
+  border: 1px solid #e0eee1;
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(138, 173, 144, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(138, 173, 144, 0.14);
+}
+
+.process-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.process-card p {
+  font-size: 0.95rem;
+  color: #6f8f77;
+}
