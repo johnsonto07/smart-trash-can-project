@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Sorting Trash Can | Hardware</title>
+  <title>Smart Sorting Trash Can | Software</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -20,57 +20,53 @@
   </header>
 
   <section class="page-header">
-    <h1>Hardware</h1>
+    <h1>Software</h1>
     <p>
-      This page highlights the physical design of the Smart Sorting Trash Can,
-      including CAD development and electrical system planning.
+      This page highlights the software side of the Smart Sorting Trash Can,
+      including model training, classification workflow, and control logic.
     </p>
   </section>
 
   <section class="split-section">
     <div class="split-text">
-      <h2>CAD Design</h2>
+      <h2>Model Training</h2>
       <p>
-        The smart trash can is an automated waste-sorting system that integrates mechanical actuation with a classification pipeline to direct 
-        items into appropriate disposal streams. Waste is introduced through a top intake chamber and falls onto an internal platform mounted 
-        on a hinged pivot, enabling controlled angular displacement about a single axis. Once positioned, the item is analyzed by a classification 
-        algorithm that determines whether it is recyclable or general waste. Based on this output, an actuation mechanism drives the platform to 
-        rotate laterally, altering its inclination such that the item rolls off under gravity into either the recycling or trash bin. This design 
-        leverages passive transport (gravity-driven motion) in combination with active control (hinge-based actuation) to achieve efficient, 
-        low-complexity sorting with minimal user intervention.
+        The classification model was developed using a ResNet-18 convolutional neural network (CNN)
+        architecture, selected for its balance between computational efficiency and strong image
+        recognition performance. The model leverages pretrained weights to improve learning efficiency
+        and achieve higher accuracy with a relatively limited dataset.
       </p>
       <p>
-        The CAD model was developed by first designing the overall enclosure and bin layout, followed by integrating internal components such 
-        as the intake chamber and hinged sorting platform. Parametric modeling was used to ensure proper alignment, clearances, and motion of 
-        the pivoting mechanism. Iterative adjustments were made to optimize fit, assembly, and functionality before physical prototyping.
+        Prior to training, all input images were standardized using ImageNet mean and standard
+        deviation to ensure consistency with the pretrained model. Data augmentation techniques,
+        including random jittering, rotations, and horizontal flips, were applied to reduce dataset
+        bias and improve model generalization across varying orientations and environmental conditions.
       </p>
     </div>
     <div class="split-image-wrap">
-      <img src="images/Screenshot 2026-04-13 181426.png" alt="CAD Design" class="split-image">
+      <img src="images/Screenshot 2026-04-13 200759.png" alt="Model Training" class="split-image" />
     </div>
   </section>
 
   <section class="split-section reverse">
-    <div class="split-image-wrap">
-      <img src="images/eediagram.png" alt="EE Diagram" class="split-image">
-      
-    </div>
     <div class="split-text">
-      <h2>EE Diagrams</h2>
+      <h2>Control Logic and Prediction Flow</h2>
       <p>
-        The electronic hardware is centered around a Raspberry Pi, which serves as the main controller and is connected to two high-torque 
-        (25 kg·cm) servo motors via power, ground, and PWM signal lines. These servos are physically mounted at the base of the hinged platform, 
-        allowing them to control its rotational motion. An infrared (IR) break-beam sensor is positioned at the intake chamber to detect when an 
-        object is inserted, while a camera is mounted on the lid mechanism above the intake to capture images of incoming waste. This layout 
-        ensures that sensing, imaging, and actuation components are aligned with the physical flow of the object through the system.
+        The system utilizes an infrared (IR) sensor to detect when an object has been placed,
+        which triggers image capture and sends the data to a FastAPI server for processing.
+        The trained model then retrieves the image and performs inference, outputting a classification
+        along with an associated confidence score.
       </p>
       <p>
-        When an object is placed into the intake, it interrupts the IR sensor beam, generating a signal that triggers the camera to capture an 
-        image. This image is then sent through a classification pipeline, where the object is identified as either recyclable or general waste. 
-        Based on the classification result, the Raspberry Pi outputs a corresponding PWM signal to the servo motors, causing the hinged platform 
-        to rotate to a predefined angle in the appropriate direction. This rotation changes the platform’s inclination, allowing the object to roll 
-        off under gravity into the correct bin, completing the automated sorting process.
+        If the confidence falls below a predefined threshold, the object is conservatively
+        classified as general waste to minimize sorting errors. The prediction result is
+        returned to the FastAPI server, where it is accessed by the Raspberry Pi, which then
+        generates the appropriate control signals to actuate the servo motors and direct the
+        platform accordingly.
       </p>
+    </div>
+    <div class="split-image-wrap">
+      <img src="images/Machine learning pipeline flowchart design.png" alt="Pipeline Diagram" class="split-image" />
     </div>
   </section>
 
