@@ -1,80 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Sorting Trash Can | Hardware</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo"><a href="index.html">SmartBin</a></div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="hardware.html">Hardware</a></li>
-      <li><a href="software.html">Software</a></li>
-      <li><a href="chemical.html">Chemical</a></li>
-      <li><a href="process.html">Process</a></li>
-    </ul>
   </header>
 
   <section class="page-header">
     <h1>Hardware</h1>
     <p>
-      This section highlights the physical design and mechanical implementation 
-      of the Smart Sorting Trash Can, including CAD modeling, structural layout, 
-      and embedded electronics.
+      This page highlights the physical design of the Smart Sorting Trash Can,
+      including CAD development and electrical system planning.
     </p>
   </section>
 
   <section class="split-section">
     <div class="split-text">
-      <h2>CAD Design and Mechanical Structure</h2>
+      <h2>CAD Design</h2>
       <p>
-        The system was designed using CAD software to model both the external enclosure 
-        and internal sorting mechanism. The design includes a top intake chamber that 
-        directs waste onto a hinged platform capable of rotating about a central axis.
+        The smart trash can is an automated waste-sorting system that integrates mechanical actuation with a classification pipeline to direct 
+        items into appropriate disposal streams. Waste is introduced through a top intake chamber and falls onto an internal platform mounted 
+        on a hinged pivot, enabling controlled angular displacement about a single axis. Once positioned, the item is analyzed by a classification 
+        algorithm that determines whether it is recyclable or general waste. Based on this output, an actuation mechanism drives the platform to 
+        rotate laterally, altering its inclination such that the item rolls off under gravity into either the recycling or trash bin. This design 
+        leverages passive transport (gravity-driven motion) in combination with active control (hinge-based actuation) to achieve efficient, 
+        low-complexity sorting with minimal user intervention.
       </p>
       <p>
-        Parametric modeling was used to ensure proper alignment, clearances, and smooth 
-        actuation of the platform. Iterative adjustments were made to optimize fit and 
-        functionality prior to fabrication.
+        The CAD model was developed by first designing the overall enclosure and bin layout, followed by integrating internal components such 
+        as the intake chamber and hinged sorting platform. Parametric modeling was used to ensure proper alignment, clearances, and motion of 
+        the pivoting mechanism. Iterative adjustments were made to optimize fit, assembly, and functionality before physical prototyping.
+
       </p>
     </div>
-
     <div class="split-image-wrap">
-      <img src="images/cad.png" alt="CAD Model" class="split-image">
+      <img src="images/Screenshot 2026-04-13 181426.png" alt="CAD Design" class="split-image">
     </div>
   </section>
 
   <section class="split-section reverse">
+    <div class="split-image-wrap">
+      <img src="images/eediagram.png" alt="EE Diagram" class="split-image">
+      
+    </div>
     <div class="split-text">
-      <h2>Embedded Electronics and Layout</h2>
+      <h2>EE Diagrams</h2>
       <p>
-        The electronic system is centered around a Raspberry Pi, which interfaces 
-        with sensing, imaging, and actuation components. Two high-torque servo motors 
-        are mounted at the base of the hinged platform and controlled via PWM signals 
-        to enable precise rotation.
+        The electronic hardware is centered around a Raspberry Pi, which serves as the main controller and is connected to two high-torque 
+        (25 kg·cm) servo motors via power, ground, and PWM signal lines. These servos are physically mounted at the base of the hinged platform, 
+        allowing them to control its rotational motion. An infrared (IR) break-beam sensor is positioned at the intake chamber to detect when an 
+        object is inserted, while a camera is mounted on the lid mechanism above the intake to capture images of incoming waste. This layout 
+        ensures that sensing, imaging, and actuation components are aligned with the physical flow of the object through the system.
       </p>
       <p>
-        An infrared sensor is positioned at the intake to detect object placement, 
-        while a camera mounted on the lid captures images for classification. This 
-        arrangement ensures proper coordination between detection, imaging, and 
-        mechanical response.
+        When an object is placed into the intake, it interrupts the IR sensor beam, generating a signal that triggers the camera to capture an 
+        image. This image is then sent through a classification pipeline, where the object is identified as either recyclable or general waste. 
+        Based on the classification result, the Raspberry Pi outputs a corresponding PWM signal to the servo motors, causing the hinged platform 
+        to rotate to a predefined angle in the appropriate direction. This rotation changes the platform’s inclination, allowing the object to roll 
+        off under gravity into the correct bin, completing the automated sorting process.
       </p>
     </div>
 
-    <div class="split-image-wrap">
-      <img src="images/electronics.png" alt="Electronics Layout" class="split-image">
-    </div>
+
+
   </section>
 
   <footer class="footer">
-    <p>Smart Sorting Trash Can Project Website</p>
-  </footer>
-
-</body>
-</html>
