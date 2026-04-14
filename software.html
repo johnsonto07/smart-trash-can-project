@@ -48,27 +48,28 @@
     </div>
   </section>
 
-  <section class="split-section reverse">
-    <div class="split-text">
-      <h2>Control Logic and Prediction Flow</h2>
-      <p>
-        The system utilizes an infrared (IR) sensor to detect when an object has been placed,
-        which triggers image capture and sends the data to a FastAPI server for processing.
-        The trained model then retrieves the image and performs inference, outputting a classification
-        along with an associated confidence score.
-      </p>
-      <p>
-        If the confidence falls below a predefined threshold, the object is conservatively
-        classified as general waste to minimize sorting errors. The prediction result is
-        returned to the FastAPI server, where it is accessed by the Raspberry Pi, which then
-        generates the appropriate control signals to actuate the servo motors and direct the
-        platform accordingly.
-      </p>
-    </div>
-    <div class="split-image-wrap">
-      <img src="images/Machine learning pipeline flowchart design.png" alt="Pipeline Diagram" class="split-image" />
-    </div>
-  </section>
+<section class="split-section">
+  <div class="split-image-wrap">
+    <img src="images/pipeline-diagram.png" alt="Pipeline Diagram" class="split-image" />
+  </div>
+
+  <div class="split-text">
+    <h2>Control Logic and Prediction Flow</h2>
+    <p>
+      The system utilizes an infrared (IR) sensor to detect when an object has been placed,
+      which triggers image capture and sends the data to a FastAPI server for processing.
+      The trained model then retrieves the image and performs inference, outputting a classification
+      along with an associated confidence score.
+    </p>
+    <p>
+      If the confidence falls below a predefined threshold, the object is conservatively
+      classified as general waste to minimize sorting errors. The prediction result is
+      returned to the FastAPI server, where it is accessed by the Raspberry Pi, which then
+      generates the appropriate control signals to actuate the servo motors and direct the
+      platform accordingly.
+    </p>
+  </div>
+</section>
 
   <footer class="footer">
     <p>Smart Sorting Trash Can Project Website</p>
