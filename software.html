@@ -31,44 +31,42 @@
     <div class="split-text">
       <h2>Model Training</h2>
       <p>
-        The classification model was developed using a ResNet-18 convolutional neural network (CNN) 
-        architecture, selected for its balance between computational efficiency and strong image 
-        recognition performance. The model leverages pretrained weights to improve learning efficiency 
+        The classification model was developed using a ResNet-18 convolutional neural network (CNN)
+        architecture, selected for its balance between computational efficiency and strong image
+        recognition performance. The model leverages pretrained weights to improve learning efficiency
         and achieve higher accuracy with a relatively limited dataset.
       </p>
       <p>
-        Prior to training, all input images were standardized using ImageNet mean and standard 
-        deviation to ensure consistency with the pretrained model. Data augmentation techniques, 
-        including random jittering, rotations, and horizontal flips, were applied to reduce dataset 
+        Prior to training, all input images were standardized using ImageNet mean and standard
+        deviation to ensure consistency with the pretrained model. Data augmentation techniques,
+        including random jittering, rotations, and horizontal flips, were applied to reduce dataset
         bias and improve model generalization across varying orientations and environmental conditions.
       </p>
     </div>
     <div class="split-image-wrap">
-      <img src="images/Screenshot 2026-04-13 200759.png" alt="Model Training" class="split-image">
+      <img src="images/Screenshot 2026-04-13 200759.png" alt="Model Training" class="split-image" />
     </div>
   </section>
 
   <section class="split-section reverse">
-    <div class="split-image-wrap">
-    </div>
     <div class="split-text">
       <h2>Control Logic and Prediction Flow</h2>
       <p>
-        The system utilizes an infrared (IR) sensor to detect when an object has been placed, 
-        which triggers image capture and sends the data to a FastAPI server for processing. 
-        The trained model then retrieves the image and performs inference, outputting a classification 
+        The system utilizes an infrared (IR) sensor to detect when an object has been placed,
+        which triggers image capture and sends the data to a FastAPI server for processing.
+        The trained model then retrieves the image and performs inference, outputting a classification
         along with an associated confidence score.
       </p>
       <p>
-        If the confidence falls below a predefined threshold, the object is conservatively 
-        classified as general waste to minimize sorting errors. The prediction result is 
-        returned to the FastAPI server, where it is accessed by the Raspberry Pi, which then 
-        generates the appropriate control signals to actuate the servo motors and direct the 
+        If the confidence falls below a predefined threshold, the object is conservatively
+        classified as general waste to minimize sorting errors. The prediction result is
+        returned to the FastAPI server, where it is accessed by the Raspberry Pi, which then
+        generates the appropriate control signals to actuate the servo motors and direct the
         platform accordingly.
       </p>
     </div>
     <div class="split-image-wrap">
-      <img src="images/Machine learning pipeline flowchart design.png" alt="Model Training" class="split-image">
+      <img src="images/Machine learning pipeline flowchart design.png" alt="Pipeline Diagram" class="split-image" />
     </div>
   </section>
 
