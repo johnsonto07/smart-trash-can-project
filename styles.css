@@ -16,48 +16,35 @@ body {
 }
 
 .navbar {
-  background: #e8f5e9;
-  border-bottom: 1px solid #d7e8d8;
-  padding: 18px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  padding: 24px 48px;
+  background-color: #e9efe7;
   flex-wrap: wrap;
 }
 
 .logo a {
   text-decoration: none;
-  color: #5f7d67;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
-  letter-spacing: 0.3px;
-}
-
-.logo a:visited {
-  color: #5f7d67;
+  color: #6f806f;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 22px;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
   flex-wrap: wrap;
 }
 
-.nav-links a {
+.nav-links li a {
   text-decoration: none;
-  color: #6f8f77;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.nav-links a:visited {
-  color: #6f8f77;
-}
-
-.nav-links a:hover {
-  color: #93b39a;
+  font-size: 1.1rem;
+  color: #6f806f;
+  white-space: nowrap;
 }
 
 .hero {
