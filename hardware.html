@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Sorting Trash Can | Software</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Sorting Trash Can | Hardware</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo"><a href="index.html">SmartBin</a></div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="hardware.html">Hardware</a></li>
       <li><a href="software.html">Software</a></li>
       <li><a href="chemical.html">Chemical</a></li>
@@ -20,58 +22,59 @@
   </header>
 
   <section class="page-header">
-    <h1>Software</h1>
+    <h1>Hardware</h1>
     <p>
-      This page highlights the software side of the Smart Sorting Trash Can,
-      including model training, classification workflow, and control logic.
+      This section highlights the physical design and mechanical implementation 
+      of the Smart Sorting Trash Can, including CAD modeling, structural layout, 
+      and embedded electronics.
     </p>
   </section>
 
   <section class="split-section">
     <div class="split-text">
-      <h2>Model Training</h2>
+      <h2>CAD Design and Mechanical Structure</h2>
       <p>
-        The classification model was developed using a ResNet-18 convolutional neural network (CNN)
-        architecture, selected for its balance between computational efficiency and strong image
-        recognition performance. The model leverages pretrained weights to improve learning efficiency
-        and achieve higher accuracy with a relatively limited dataset.
+        The system was designed using CAD software to model both the external enclosure 
+        and internal sorting mechanism. The design includes a top intake chamber that 
+        directs waste onto a hinged platform capable of rotating about a central axis.
       </p>
       <p>
-        Prior to training, all input images were standardized using ImageNet mean and standard
-        deviation to ensure consistency with the pretrained model. Data augmentation techniques,
-        including random jittering, rotations, and horizontal flips, were applied to reduce dataset
-        bias and improve model generalization across varying orientations and environmental conditions.
+        Parametric modeling was used to ensure proper alignment, clearances, and smooth 
+        actuation of the platform. Iterative adjustments were made to optimize fit and 
+        functionality prior to fabrication.
       </p>
     </div>
+
     <div class="split-image-wrap">
-      <img src="images/Screenshot 2026-04-13 200759.png" alt="Model Training" class="split-image" />
+      <img src="images/cad.png" alt="CAD Model" class="split-image">
     </div>
   </section>
 
   <section class="split-section reverse">
     <div class="split-text">
-      <h2>Control Logic and Prediction Flow</h2>
+      <h2>Embedded Electronics and Layout</h2>
       <p>
-        The system utilizes an infrared (IR) sensor to detect when an object has been placed,
-        which triggers image capture and sends the data to a FastAPI server for processing.
-        The trained model then retrieves the image and performs inference, outputting a classification
-        along with an associated confidence score.
+        The electronic system is centered around a Raspberry Pi, which interfaces 
+        with sensing, imaging, and actuation components. Two high-torque servo motors 
+        are mounted at the base of the hinged platform and controlled via PWM signals 
+        to enable precise rotation.
       </p>
       <p>
-        If the confidence falls below a predefined threshold, the object is conservatively
-        classified as general waste to minimize sorting errors. The prediction result is
-        returned to the FastAPI server, where it is accessed by the Raspberry Pi, which then
-        generates the appropriate control signals to actuate the servo motors and direct the
-        platform accordingly.
+        An infrared sensor is positioned at the intake to detect object placement, 
+        while a camera mounted on the lid captures images for classification. This 
+        arrangement ensures proper coordination between detection, imaging, and 
+        mechanical response.
       </p>
     </div>
+
     <div class="split-image-wrap">
-      <img src="images/Machine learning pipeline flowchart design.png" alt="Pipeline Diagram" class="split-image" />
+      <img src="images/electronics.png" alt="Electronics Layout" class="split-image">
     </div>
   </section>
 
   <footer class="footer">
     <p>Smart Sorting Trash Can Project Website</p>
   </footer>
+
 </body>
 </html>
