@@ -335,6 +335,70 @@ img {
   border-radius: 14px;
   margin-bottom: 10px;
 }
+.split-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 40px;
+}
+
+.split-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.split-text {
+  flex: 1;
+}
+
+.split-text h2 {
+  font-size: 3rem;
+  color: #6f806f;
+  margin-bottom: 20px;
+}
+
+.split-text p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #6f806f;
+  margin-bottom: 18px;
+}
+
+.split-image-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.split-image {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 900px) {
+  .split-section,
+  .split-section.reverse {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .split-text h2 {
+    font-size: 2.2rem;
+  }
+
+  .split-text p {
+    font-size: 1.05rem;
+  }
+}
 
 .process-card p {
   font-size: 0.95rem;
