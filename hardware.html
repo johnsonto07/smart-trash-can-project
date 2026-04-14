@@ -51,27 +51,32 @@
     </div>
   </section>
 
-  <section class="split-section reverse">
-    <div class="split-image-wrap">
-      <img src="images/eediagram.png" alt="EE Diagram" class="split-image">
-    </div>
-    <div class="split-text">
-      <h2>EE Diagrams</h2>
-      <p>
-        The electronic hardware is centered around a Raspberry Pi, which serves as the main controller and is connected to two high-torque 
-        (25 kg·cm) servo motors via power, ground, and PWM signal lines. These servos are physically mounted at the base of the hinged platform, 
-        allowing them to control its rotational motion. An infrared (IR) break-beam sensor is positioned at the intake chamber to detect when an 
-        object is inserted, while a camera is mounted on the lid mechanism above the intake to capture images of incoming waste. This layout 
-        ensures that sensing, imaging, and actuation components are aligned with the physical flow of the object through the system.
-      </p>
-      <p>
-        When an object is placed into the intake, it interrupts the IR sensor beam, generating a signal that triggers the camera to capture an 
-        image. This image is then sent through a classification pipeline, where the object is identified as either recyclable or general waste. 
+<section class="split-section">
+  <div class="split-image-wrap">
+    <img src="images/eediagram.png" alt="EE Diagram" class="split-image">
+  </div>
+
+  <div class="split-text">
+    <h2>EE Diagrams</h2>
+    <p>
+      The electronic hardware is centered around a Raspberry Pi, which serves as the main controller and is connected to two high-torque 
+      (25 kg·cm) servo motors via power, ground, and PWM signal lines. These servos are physically mounted at the base of the hinged platform, 
+      allowing them to control its rotational motion. An infrared (IR) break-beam sensor is positioned at the intake chamber to detect when an 
+      object is inserted, while a camera is mounted on the lid mechanism above the intake to capture images of incoming waste. This layout 
+      ensures that sensing, imaging, and actuation components are aligned with the physical flow of the object through the system.
+    </p>
+    <p>
+      When an object is placed into the intake, it interrupts the IR sensor beam, generating a signal that triggers the camera to capture an 
+      image. This image is then sent through a classification pipeline, where the object is identified as either recyclable or generalwaste. 
         Based on the classification result, the Raspberry Pi outputs a corresponding PWM signal to the servo motors, causing the hinged platform 
         to rotate to a predefined angle in the appropriate direction. This rotation changes the platform’s inclination, allowing the object to roll 
         off under gravity into the correct bin, completing the automated sorting process.
       </p>
     </div>
   </section>
-
+  
   <footer class="footer">
+    <p>Smart Sorting Trash Can Project Website</p>
+  </footer>
+</body>
+</html>
