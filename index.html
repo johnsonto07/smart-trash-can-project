@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Smart Sorting Trash Can | UC Berkeley team project</title>
-  <meta name="description" content="A trash can that sorts its own waste. A camera and a ResNet-18 image classifier decide trash or recycling, and a servo-driven platform tips the item into the right bin. 14-person UC Berkeley team project, spring 2026.">
+  <meta name="description" content="A trash can that sorts its own waste. A camera and a ResNet50 image classifier decide trash or recycling, and a servo-driven platform tips the item into the right bin. 14-person UC Berkeley team project, spring 2026.">
   <meta property="og:title" content="Smart Sorting Trash Can">
-  <meta property="og:description" content="Camera + ResNet-18 classifier + servo-driven platform. 95.2% validation accuracy on 15,000 images. UC Berkeley team project, spring 2026.">
+  <meta property="og:description" content="IR-triggered image capture, a ResNet50 classifier trained on 10,000+ images, and a servo-actuated tilting platform. UC Berkeley team project, spring 2026.">
   <meta property="og:image" content="https://johnsonto07.github.io/smart-trash-can-project/images/bin-top.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='14' width='24' height='40' rx='4' fill='%23b8322a'/%3E%3Crect x='34' y='14' width='24' height='40' rx='4' fill='%232565ae'/%3E%3C/svg%3E">
@@ -20,7 +20,7 @@
     <div class="wrap top-row">
       <a class="brand" href="#main" aria-label="Smart Sorting Trash Can, back to top"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>Smart Sorting Trash Can</a>
       <nav class="nav" aria-label="Sections">
-        <a href="#how">How it sorts</a>
+        <a href="#how">Sequence</a>
         <a href="#hardware">Hardware</a>
         <a href="#model">Model</a>
         <a href="#chemistry">Chemistry</a>
@@ -36,22 +36,22 @@
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <p class="kicker">UC Berkeley team project, January to May 2026</p>
-          <h1>A trash can that sorts its own waste</h1>
-          <p class="lede">Drop an item in. A camera photographs it, a ResNet-18 image classifier calls it trash or recycling, and two servos tip the platform so the item rolls into the right bin. Fourteen students from five majors designed, built, and trained it in one semester.</p>
+          <h1>Automated waste sorting with computer vision</h1>
+          <p class="lede">A two-stream sorter for recyclables and general waste. An infrared break-beam sensor triggers image capture, a ResNet50 convolutional neural network fine-tuned from ImageNet weights classifies the item, and a servo-actuated tilting platform deposits it by gravity into the matching bin. Designed, built, and trained by a 14-person interdisciplinary team in one semester; the unit is now in daily use.</p>
           <dl class="stats">
-            <div><dt>Validation accuracy</dt><dd>95.2%</dd></div>
-            <div><dt>Training images</dt><dd>15,000</dd></div>
+            <div><dt>Peak classification confidence</dt><dd>95%</dd></div>
+            <div><dt>Training images</dt><dd>10,000+</dd></div>
             <div><dt>Enclosure (in)</dt><dd>15×30×20</dd></div>
-            <div><dt>Students</dt><dd>14</dd></div>
+            <div><dt>Team members</dt><dd>14</dd></div>
           </dl>
           <div class="hero-actions">
             <a class="btn btn-solid" href="#videos">Watch the demo</a>
-            <a class="btn" href="#how">See how it sorts</a>
+            <a class="btn" href="#how">See the sorting sequence</a>
           </div>
         </div>
         <figure class="hero-photo">
           <img src="images/bin-top.jpg" width="2000" height="1500" alt="The finished sorter from above: a clear polycarbonate intake chamber between two red lids labeled Trash and Recycle, on a black-painted wood base." fetchpriority="high">
-          <figcaption>The finished unit. Items go into the clear chamber in the middle; the lids on either side open to empty the bins.</figcaption>
+          <figcaption>Final assembly. Items enter the central polycarbonate intake chamber; the hinged lids on either side give access to the trash and recycling bins.</figcaption>
         </figure>
       </div>
     </section>
@@ -59,8 +59,8 @@
     <section class="section" id="how" aria-labelledby="how-h">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="how-h">How it sorts</h2>
-          <p>Each item takes about the same path. Pick one to send through the system.</p>
+          <h2 id="how-h">Sorting sequence</h2>
+          <p>Every item passes through the same five-stage sequence: deposit, detection, image capture, inference, and actuation. Select an example item to step through it.</p>
         </div>
 
         <div class="sim" data-sim>
@@ -72,19 +72,19 @@
           </div>
 
           <ol class="flow">
-            <li data-step="drop"><span class="flow-n">1</span><h3>Item dropped in</h3><p>The item lands on a hinged platform inside the clear intake chamber.</p></li>
-            <li data-step="ir"><span class="flow-n">2</span><h3>IR beam breaks</h3><p>An infrared break-beam sensor at the intake tells the Raspberry Pi something arrived.</p></li>
-            <li data-step="cam"><span class="flow-n">3</span><h3>Camera takes a photo</h3><p>A Pi camera mounted in the lid captures one image of the item.</p></li>
-            <li data-step="model"><span class="flow-n">4</span><h3>Model classifies it</h3><p>The image goes to a FastAPI server running the ResNet-18 model, which returns a class and a confidence score.</p><p class="readout" data-readout aria-live="polite">Pick an item above.</p></li>
+            <li data-step="drop"><span class="flow-n">1</span><h3>Deposit</h3><p>The item lands on a single-axis hinged platform inside the intake chamber.</p></li>
+            <li data-step="ir"><span class="flow-n">2</span><h3>Detection</h3><p>The item interrupts an infrared break-beam at the intake, sending a trigger signal to the Raspberry Pi.</p></li>
+            <li data-step="cam"><span class="flow-n">3</span><h3>Image capture</h3><p>A lid-mounted Pi camera acquires a single frame of the item on the platform.</p></li>
+            <li data-step="model"><span class="flow-n">4</span><h3>Inference</h3><p>The frame is sent to a FastAPI inference server running the ResNet50 model, which returns a predicted class and its softmax confidence.</p><p class="readout" data-readout aria-live="polite">Pick an item above.</p></li>
             <li data-step="tilt" class="flow-split">
-              <span class="flow-n">5</span><h3>Platform tilts</h3>
+              <span class="flow-n">5</span><h3>Actuation</h3>
               <div class="bins">
-                <div class="bin bin-recycle" data-bin="recycle"><b>Recycling</b><span>Confident it's recyclable</span></div>
-                <div class="bin bin-trash" data-bin="trash"><b>Trash</b><span>Trash, or confidence below the threshold</span></div>
+                <div class="bin bin-recycle" data-bin="recycle"><b>Recycling</b><span>Recyclable, confidence above threshold</span></div>
+                <div class="bin bin-trash" data-bin="trash"><b>Trash</b><span>General waste, or confidence below threshold</span></div>
               </div>
             </li>
           </ol>
-          <p class="sim-note">Low-confidence calls go to trash on purpose. One wrong item in a recycling bin can contaminate the batch, so the system only sends items to recycling when it is sure.</p>
+          <p class="sim-note">The decision rule is deliberately asymmetric. Any prediction below the confidence threshold defaults to general waste, because a false positive (trash sent to recycling) contaminates the recycling stream, while a false negative only loses one recyclable item. The threshold trades recall on the recyclable class for higher precision.</p>
         </div>
       </div>
     </section>
@@ -93,16 +93,16 @@
       <div class="wrap">
         <div class="section-head">
           <h2 id="hw-h">Hardware</h2>
-          <p>Gravity does the moving. The servos only set the platform's angle.</p>
+          <p>Sorting combines active actuation with passive, gravity-driven transport: the servos set the platform's inclination, and gravity moves the item.</p>
         </div>
 
         <div class="split">
           <figure class="panel"><img src="images/cad-iso.png" width="1508" height="1255" alt="SolidWorks model of the enclosure: two bin compartments with pull-out drawers and a raised intake box in the middle." loading="lazy"><figcaption>Final CAD. Two pull-out bins sit under a central intake chamber.</figcaption></figure>
           <div class="prose">
-            <h3>Mechanism</h3>
-            <p>Waste falls through the top intake onto a platform hinged along one axis. After the model decides, the Raspberry Pi sends a PWM signal to two 25 kg·cm servos mounted at the base of the platform. They rotate it to a set angle toward one side, and the item rolls off into that bin.</p>
-            <p>We modeled the enclosure first, then fit the intake chamber and pivoting platform inside it, and adjusted clearances in CAD until the platform could swing both ways without hitting the walls.</p>
-            <h3>Parts</h3>
+            <h3>Mechanical design</h3>
+            <p>Waste enters through the top intake and comes to rest on a platform hinged about a single axis. Once a classification is returned, the Raspberry Pi drives two 25 kg·cm servos mounted at the platform base with a PWM signal, rotating the platform to a preset angle toward the target bin. The item then slides off under gravity. Using gravity for transport keeps the mechanism to one degree of freedom and two actuators.</p>
+            <p>The enclosure was modeled parametrically in SolidWorks. We defined the outer enclosure and bin layout first, then integrated the intake chamber and pivoting platform, and iterated on clearances until the platform could rotate fully in both directions without interference.</p>
+            <h3>Components</h3>
             <ul class="specs">
               <li><span>Controller</span>Raspberry Pi</li>
               <li><span>Sensing</span>IR break-beam sensor, Pi camera</li>
@@ -117,38 +117,39 @@
           <figure class="panel"><img src="images/ee-diagram.png" width="1600" height="1200" alt="Wiring diagram: Raspberry Pi connected to a camera module, an IR sensor, two servo motors, and a battery pack." loading="lazy"><figcaption>Wiring diagram</figcaption></figure>
           <div class="prose">
             <h3>Electronics</h3>
-            <p>Everything runs from one Raspberry Pi. The camera connects through the Pi's ribbon port and sits in the lid above the intake. The IR break-beam sensor and both servos connect to GPIO pins, and each servo gets power, ground, and a PWM signal line.</p>
-            <p>The parts are placed along the path an item takes: the sensor where it enters, the camera directly above where it lands, and the servos under the platform it lands on.</p>
+            <p>A single Raspberry Pi handles sensing, communication, and control. The camera module connects through the CSI ribbon port and is mounted in the lid above the intake. The IR break-beam sensor and both servos connect to GPIO, with each servo receiving power, ground, and a PWM control line.</p>
+            <p>Component placement follows the item's path through the system: the sensor at the point of entry, the camera directly above the resting position, and the actuators beneath the platform.</p>
           </div>
         </div>
-      </div>
       </div>
     </section>
 
     <section class="section" id="model" aria-labelledby="model-h">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="model-h">The model</h2>
-          <p>A pretrained ResNet-18, fine-tuned for two classes.</p>
+          <h2 id="model-h">Classification model</h2>
+          <p>Binary image classification (recyclable vs. general waste) by transfer learning from an ImageNet-pretrained ResNet.</p>
         </div>
 
         <div class="split">
           <figure class="panel chart-panel">
-            <div class="chart" data-acc-chart role="img" aria-label="Validation accuracy by training epoch: 87.9% after epoch 1, rising to 95.2% after epoch 8."></div>
-            <figcaption>Validation accuracy after each epoch, from the training log. It passed 95% at epoch 6 and reached 95.2% at epoch 8.</figcaption>
+            <div class="chart" data-acc-chart role="img" aria-label="ResNet-18 baseline validation accuracy by training epoch: 87.9% after epoch 1, rising to 95.2% after epoch 8."></div>
+            <figcaption>Validation accuracy per epoch for the ResNet-18 baseline (15,000 images, 12,750 train / 2,250 validation). Accuracy exceeded 95% by epoch 6 and reached 95.2% at epoch 8.</figcaption>
           </figure>
           <div class="prose">
-            <h3>Training</h3>
-            <p>We started from ResNet-18 with ImageNet weights, which learns faster from a limited dataset than training from scratch. The 15,000 images came from a public Kaggle dataset, split 12,750 for training and 2,250 for validation.</p>
-            <p>Every image was resized to 224 × 224 and normalized with the ImageNet mean and standard deviation. Random flips, rotations, and color jitter were added during training so the model would handle items at any angle and in different lighting. We trained with the Adam optimizer and cross-entropy loss for 10 epochs.</p>
-            <h3>Running it on the bin</h3>
-            <p>The Pi sends each photo to a FastAPI server (served with Uvicorn) that runs the model and returns the class and confidence. The Pi reads the result and drives the servos.</p>
+            <h3>Architecture and training</h3>
+            <p>The deployed classifier is a ResNet50 convolutional neural network trained on 10,000+ labeled images from a public Kaggle dataset. Initializing from ImageNet weights lets the network reuse general visual features (edges, textures, shapes), which converges faster and generalizes better on a dataset of this size than training from random initialization.</p>
+            <p>Before the final model, we trained a lighter ResNet-18 baseline with the same pipeline to validate the approach. It reached 95.2% validation accuracy after 8 epochs, as shown in the accuracy curve.</p>
+            <h3>Preprocessing and augmentation</h3>
+            <p>Images were resized to 224 × 224 pixels and normalized to the ImageNet channel means and standard deviations, matching the statistics of the pretrained weights. Random horizontal flips, rotations, and color jitter were applied during training to reduce sensitivity to orientation and lighting. Training used the Adam optimizer with cross-entropy loss.</p>
+            <h3>Deployment</h3>
+            <p>Inference runs on a FastAPI server (Uvicorn). The Raspberry Pi posts each captured frame to the server, receives the predicted class and confidence, applies the threshold rule, and issues the corresponding servo command.</p>
           </div>
         </div>
 
         <div class="split split-even">
-          <figure class="panel"><img src="images/ml-pipeline.png" width="1536" height="1024" alt="Pipeline diagram: data collection from a Kaggle dataset, ResNet-18 model, preprocessing to 224 by 224 with ImageNet normalization and random flips, training loop with Adam and cross-entropy loss, deployment with FastAPI, Picamera, and Uvicorn." loading="lazy"><figcaption>Training and deployment pipeline</figcaption></figure>
-          <figure class="panel panel-dark"><img src="images/training-log.png" width="1199" height="739" alt="Terminal output from train.py showing 15,000 samples, ImageNet-pretrained ResNet-18, and validation accuracy for epochs 1 through 8." loading="lazy"><figcaption>Raw training log</figcaption></figure>
+          <figure class="panel"><img src="images/ml-pipeline.png" width="1536" height="1024" alt="Pipeline diagram: data collection from a Kaggle dataset, ResNet-18 model, preprocessing to 224 by 224 with ImageNet normalization and random flips, training loop with Adam and cross-entropy loss, deployment with FastAPI, Picamera, and Uvicorn." loading="lazy"><figcaption>Training and deployment pipeline (shown for the ResNet-18 baseline)</figcaption></figure>
+          <figure class="panel panel-dark"><img src="images/training-log.png" width="1199" height="739" alt="Terminal output from train.py showing 15,000 samples, ImageNet-pretrained ResNet-18, and validation accuracy for epochs 1 through 8." loading="lazy"><figcaption>Training log for the ResNet-18 baseline</figcaption></figure>
         </div>
       </div>
     </section>
@@ -156,19 +157,19 @@
     <section class="section section-alt" id="chemistry" aria-labelledby="chem-h">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="chem-h">Odor control and materials</h2>
-          <p>The chemical engineering side: keeping a closed bin clean, and picking what to build it from.</p>
+          <h2 id="chem-h">Odor control and material selection</h2>
+          <p>The chemical engineering subsystem: sanitation and odor management inside a closed container, and material choices for a moist, mixed-waste environment.</p>
         </div>
 
         <div class="split">
           <figure class="panel panel-portrait"><img src="images/disinfectant.jpg" width="1500" height="2000" alt="A bottle of 91% isopropyl alcohol, a small amber bottle of scented oil, and a clear spray bottle on a windowsill." loading="lazy"><figcaption>91% isopropyl alcohol, scent oil, and the spray bottle for the diluted mix.</figcaption></figure>
           <div class="prose">
             <h3>Disinfectant</h3>
-            <p>We diluted 91% isopropyl alcohol to 70%. At 70%, the water in the mix slows evaporation and helps the alcohol get into cells and denature their proteins, so it disinfects better than the stronger stock. We tested several dilutions to balance cost against cleaning performance.</p>
+            <p>The cleaning solution is 70% (v/v) isopropyl alcohol, diluted from 91% stock. Aqueous alcohol at this concentration is a more effective disinfectant than higher concentrations: water slows evaporation, extending contact time, and is required for the alcohol to penetrate cell walls and denature proteins. We compared several dilutions to balance material cost against cleaning efficacy.</p>
             <h3>Scent</h3>
-            <p>Our first try mixed fragrance into the alcohol. It evaporated with the alcohol within minutes and the smell didn't last. We switched to an oil-based scent, which stays in the enclosed bin much longer.</p>
+            <p>The first formulation dissolved fragrance in the alcohol carrier. Because the carrier is highly volatile, the fragrance evaporated with it and odor masking did not persist. We switched to an oil-based fragrance, whose lower vapor pressure gives a slower, sustained release inside the enclosed bin.</p>
             <h3>Materials</h3>
-            <p>The intake chamber is polycarbonate. It holds up to moisture from wet waste and lets the camera see in. The frame and bins are wood, which was much faster to cut and change while we were still prototyping.</p>
+            <p>The intake chamber is polycarbonate, chosen for its resistance to moisture from wet waste and its optical transparency, which gives the camera a clear view of the platform. Structural members and bins are wood, which is far easier to machine and modify than polycarbonate and suited rapid iteration during prototyping.</p>
           </div>
         </div>
       </div>
@@ -177,17 +178,17 @@
     <section class="section" id="build" aria-labelledby="build-h">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="build-h">Building it</h2>
-          <p>From the first CAD mock-up to a working demo.</p>
+          <h2 id="build-h">Development</h2>
+          <p>From initial CAD concept to a working, tested unit.</p>
         </div>
 
         <ol class="log">
-          <li><figure><img src="images/cad-early.png" width="1304" height="1102" alt="Early CAD mock-up of the enclosure." loading="lazy"><figcaption>First CAD mock-up</figcaption></figure></li>
-          <li><figure><img src="images/build-enclosure.jpg" width="2000" height="1500" alt="Four team members assembling the unpainted plywood enclosure with the clear intake box on top." loading="lazy"><figcaption>Assembling the enclosure</figcaption></figure></li>
-          <li><figure><img src="images/build-planning.jpg" width="2000" height="1500" alt="Two team members reviewing plans on a tablet." loading="lazy"><figcaption>Working out the build plan</figcaption></figure></li>
-          <li><figure><img src="images/build-training.jpg" width="2000" height="1500" alt="Team member at a laptop and monitor running the training script." loading="lazy"><figcaption>Training the model</figcaption></figure></li>
-          <li><figure><img src="images/build-disinfectant.jpg" width="2000" height="1500" alt="Two team members measuring isopropyl alcohol into a spray bottle by a window." loading="lazy"><figcaption>Mixing the disinfectant</figcaption></figure></li>
-          <li><figure><img src="images/build-wiring.jpg" width="2000" height="1500" alt="Two team members wiring the camera and electronics into the painted lid." loading="lazy"><figcaption>Wiring the camera and sensors</figcaption></figure></li>
+          <li><figure><img src="images/cad-early.png" width="1304" height="1102" alt="Early CAD mock-up of the enclosure." loading="lazy"><figcaption>Initial CAD concept</figcaption></figure></li>
+          <li><figure><img src="images/build-enclosure.jpg" width="2000" height="1500" alt="Four team members assembling the unpainted plywood enclosure with the clear intake box on top." loading="lazy"><figcaption>Enclosure assembly</figcaption></figure></li>
+          <li><figure><img src="images/build-planning.jpg" width="2000" height="1500" alt="Two team members reviewing plans on a tablet." loading="lazy"><figcaption>Build planning</figcaption></figure></li>
+          <li><figure><img src="images/build-training.jpg" width="2000" height="1500" alt="Team member at a laptop and monitor running the training script." loading="lazy"><figcaption>Model training</figcaption></figure></li>
+          <li><figure><img src="images/build-disinfectant.jpg" width="2000" height="1500" alt="Two team members measuring isopropyl alcohol into a spray bottle by a window." loading="lazy"><figcaption>Disinfectant formulation</figcaption></figure></li>
+          <li><figure><img src="images/build-wiring.jpg" width="2000" height="1500" alt="Two team members wiring the camera and electronics into the painted lid." loading="lazy"><figcaption>Camera and sensor integration</figcaption></figure></li>
         </ol>
 
         <h3 class="sub" id="videos">Videos</h3>
@@ -212,7 +213,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2 id="team-h">Team</h2>
-          <p>Fourteen UC Berkeley students in chemical, mechanical, and civil engineering, EECS, and data science.</p>
+          <p>Fourteen UC Berkeley students across chemical, mechanical, and civil engineering, EECS, and data science.</p>
         </div>
         <figure class="team-photo"><img src="images/team.jpg" width="2000" height="1333" alt="The fourteen team members in business attire in front of a campus building." loading="lazy"></figure>
         <ul class="people">

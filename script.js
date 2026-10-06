@@ -25,10 +25,10 @@
   var sim = document.querySelector('[data-sim]');
   if (sim) {
     var items = {
-      bottle:  { call: 'Recyclable, high confidence', bin: 'recycle' },
-      can:     { call: 'Recyclable, high confidence', bin: 'recycle' },
-      wrapper: { call: 'Trash, high confidence', bin: 'trash' },
-      unsure:  { call: 'Recyclable, but below the confidence threshold', bin: 'trash' }
+      bottle:  { call: 'Predicted: recyclable, above threshold', bin: 'recycle' },
+      can:     { call: 'Predicted: recyclable, above threshold', bin: 'recycle' },
+      wrapper: { call: 'Predicted: general waste', bin: 'trash' },
+      unsure:  { call: 'Predicted: recyclable, below threshold', bin: 'trash' }
     };
     var steps = sim.querySelectorAll('.flow > li');
     var bins = sim.querySelectorAll('[data-bin]');
@@ -45,7 +45,7 @@
     function run(key) {
       var item = items[key];
       reset();
-      readout.textContent = 'Classifying…';
+      readout.textContent = 'Running inference…';
       var gap = reduce ? 0 : 420;
       steps.forEach(function (s, i) {
         timers.push(setTimeout(function () {
@@ -54,7 +54,7 @@
           if (i === steps.length - 1) {
             sim.querySelector('[data-bin="' + item.bin + '"]').classList.add('hit');
             sim.setAttribute('data-done', '');
-            readout.textContent = item.call + ' → ' + (item.bin === 'recycle' ? 'recycling bin' : 'trash bin');
+            readout.textContent = item.call + ' → ' + (item.bin === 'recycle' ? 'recycling' : 'general waste');
           }
         }, i * gap));
       });
