@@ -1,73 +1,247 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Sorting Trash Can | Home</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Sorting Trash Can | UC Berkeley team project</title>
+  <meta name="description" content="A trash can that sorts its own waste. A camera and a ResNet-18 image classifier decide trash or recycling, and a servo-driven platform tips the item into the right bin. 14-person UC Berkeley team project, spring 2026.">
+  <meta property="og:title" content="Smart Sorting Trash Can">
+  <meta property="og:description" content="Camera + ResNet-18 classifier + servo-driven platform. 95.2% validation accuracy on 15,000 images. UC Berkeley team project, spring 2026.">
+  <meta property="og:image" content="https://johnsonto07.github.io/smart-trash-can-project/images/bin-top.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='14' width='24' height='40' rx='4' fill='%23b8322a'/%3E%3Crect x='34' y='14' width='24' height='40' rx='4' fill='%232565ae'/%3E%3C/svg%3E">
+  <script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preload" href="fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">
-      <a href="index.html">SmartBin</a>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="wrap top-row">
+      <a class="brand" href="#main" aria-label="Smart Sorting Trash Can, back to top"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>Smart Sorting Trash Can</a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#how">How it sorts</a>
+        <a href="#hardware">Hardware</a>
+        <a href="#model">Model</a>
+        <a href="#chemistry">Chemistry</a>
+        <a href="#build">Build</a>
+        <a href="#team">Team</a>
+      </nav>
+      <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
     </div>
-
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="hardware.html">Hardware</a></li>
-      <li><a href="software.html">Software</a></li>
-      <li><a href="chemical.html">Chemical</a></li>
-      <li><a href="process.html">Process</a></li>
-    </ul>
   </header>
 
-<section class="hero">
-  <div class="hero-box">
-    <h1>Smart Sorting Trash Can</h1>
-    <p>
-      An interdisciplinary engineering project focused on automatically
-      identifying and sorting waste into waste and recylablesthrough 
-      intelligent hardware, software and chemical engineering design.
-    </p>
-    <a class="button" href="about.html">Meet the Team</a>
-  </div>
-</section>
-
-  <section class="section">
-    <h2>Project Overview</h2>
-
-    <div class="two-column">
-      <div>
-        <p>
-          The Smart Sorting Trash Can is a team-based engineering project
-          designed to improve waste disposal by automatically identifying and
-          sorting items into the correct category. By combining machine
-          learning, hardware integration, and system design, the project aims
-          to reduce recycling contamination and create a smarter, more efficient
-          disposal process.
-        </p>
-
-        <br />
-
-        <p>
-          Our team worked across multiple disciplines to develop the full
-          system. The hardware side focuses on the physical structure, CAD
-          design, and electrical setup. The software side covers image
-          classification, model training, and control logic. The chemical
-          section explores odor control and material considerations that improve
-          the practicality of the final design.
-        </p>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">UC Berkeley team project, January to May 2026</p>
+          <h1>A trash can that sorts its own waste</h1>
+          <p class="lede">Drop an item in. A camera photographs it, a ResNet-18 image classifier calls it trash or recycling, and two servos tip the platform so the item rolls into the right bin. Fourteen students from five majors designed, built, and trained it in one semester.</p>
+          <dl class="stats">
+            <div><dt>Validation accuracy</dt><dd>95.2%</dd></div>
+            <div><dt>Training images</dt><dd>15,000</dd></div>
+            <div><dt>Enclosure (in)</dt><dd>15×30×20</dd></div>
+            <div><dt>Students</dt><dd>14</dd></div>
+          </dl>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="#videos">Watch the demo</a>
+            <a class="btn" href="#how">See how it sorts</a>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img src="images/bin-top.jpg" width="2000" height="1500" alt="The finished sorter from above: a clear polycarbonate intake chamber between two red lids labeled Trash and Recycle, on a black-painted wood base." fetchpriority="high">
+          <figcaption>The finished unit. Items go into the clear chamber in the middle; the lids on either side open to empty the bins.</figcaption>
+        </figure>
       </div>
+    </section>
 
-<div class="image-wrap">
-  <img src="images/IMG_4884.jpg" alt="Smart Trash Can Prototype" class="section-image">
-</div>
+    <section class="section" id="how" aria-labelledby="how-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="how-h">How it sorts</h2>
+          <p>Each item takes about the same path. Pick one to send through the system.</p>
+        </div>
+
+        <div class="sim" data-sim>
+          <div class="sim-pick" role="group" aria-label="Choose an item to drop in">
+            <button type="button" class="chip" data-item="bottle" aria-pressed="false">Plastic bottle</button>
+            <button type="button" class="chip" data-item="can" aria-pressed="false">Aluminum can</button>
+            <button type="button" class="chip" data-item="wrapper" aria-pressed="false">Chip bag</button>
+            <button type="button" class="chip" data-item="unsure" aria-pressed="false">Crumpled, hard to see</button>
+          </div>
+
+          <ol class="flow">
+            <li data-step="drop"><span class="flow-n">1</span><h3>Item dropped in</h3><p>The item lands on a hinged platform inside the clear intake chamber.</p></li>
+            <li data-step="ir"><span class="flow-n">2</span><h3>IR beam breaks</h3><p>An infrared break-beam sensor at the intake tells the Raspberry Pi something arrived.</p></li>
+            <li data-step="cam"><span class="flow-n">3</span><h3>Camera takes a photo</h3><p>A Pi camera mounted in the lid captures one image of the item.</p></li>
+            <li data-step="model"><span class="flow-n">4</span><h3>Model classifies it</h3><p>The image goes to a FastAPI server running the ResNet-18 model, which returns a class and a confidence score.</p><p class="readout" data-readout aria-live="polite">Pick an item above.</p></li>
+            <li data-step="tilt" class="flow-split">
+              <span class="flow-n">5</span><h3>Platform tilts</h3>
+              <div class="bins">
+                <div class="bin bin-recycle" data-bin="recycle"><b>Recycling</b><span>Confident it's recyclable</span></div>
+                <div class="bin bin-trash" data-bin="trash"><b>Trash</b><span>Trash, or confidence below the threshold</span></div>
+              </div>
+            </li>
+          </ol>
+          <p class="sim-note">Low-confidence calls go to trash on purpose. One wrong item in a recycling bin can contaminate the batch, so the system only sends items to recycling when it is sure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="hardware" aria-labelledby="hw-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="hw-h">Hardware</h2>
+          <p>Gravity does the moving. The servos only set the platform's angle.</p>
+        </div>
+
+        <div class="split">
+          <figure class="panel"><img src="images/cad-iso.png" width="1508" height="1255" alt="SolidWorks model of the enclosure: two bin compartments with pull-out drawers and a raised intake box in the middle." loading="lazy"><figcaption>Final CAD. Two pull-out bins sit under a central intake chamber.</figcaption></figure>
+          <div class="prose">
+            <h3>Mechanism</h3>
+            <p>Waste falls through the top intake onto a platform hinged along one axis. After the model decides, the Raspberry Pi sends a PWM signal to two 25 kg·cm servos mounted at the base of the platform. They rotate it to a set angle toward one side, and the item rolls off into that bin.</p>
+            <p>We modeled the enclosure first, then fit the intake chamber and pivoting platform inside it, and adjusted clearances in CAD until the platform could swing both ways without hitting the walls.</p>
+            <h3>Parts</h3>
+            <ul class="specs">
+              <li><span>Controller</span>Raspberry Pi</li>
+              <li><span>Sensing</span>IR break-beam sensor, Pi camera</li>
+              <li><span>Actuation</span>2 × 25 kg·cm servos on PWM</li>
+              <li><span>Power</span>USB power bank</li>
+              <li><span>Enclosure</span>Polycarbonate intake, painted wood frame, 15&nbsp;×&nbsp;30&nbsp;×&nbsp;20&nbsp;in</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="split split-flip">
+          <figure class="panel"><img src="images/ee-diagram.png" width="1600" height="1200" alt="Wiring diagram: Raspberry Pi connected to a camera module, an IR sensor, two servo motors, and a battery pack." loading="lazy"><figcaption>Wiring diagram</figcaption></figure>
+          <div class="prose">
+            <h3>Electronics</h3>
+            <p>Everything runs from one Raspberry Pi. The camera connects through the Pi's ribbon port and sits in the lid above the intake. The IR break-beam sensor and both servos connect to GPIO pins, and each servo gets power, ground, and a PWM signal line.</p>
+            <p>The parts are placed along the path an item takes: the sensor where it enters, the camera directly above where it lands, and the servos under the platform it lands on.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="section" id="model" aria-labelledby="model-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="model-h">The model</h2>
+          <p>A pretrained ResNet-18, fine-tuned for two classes.</p>
+        </div>
+
+        <div class="split">
+          <figure class="panel chart-panel">
+            <div class="chart" data-acc-chart role="img" aria-label="Validation accuracy by training epoch: 87.9% after epoch 1, rising to 95.2% after epoch 8."></div>
+            <figcaption>Validation accuracy after each epoch, from the training log. It passed 95% at epoch 6 and reached 95.2% at epoch 8.</figcaption>
+          </figure>
+          <div class="prose">
+            <h3>Training</h3>
+            <p>We started from ResNet-18 with ImageNet weights, which learns faster from a limited dataset than training from scratch. The 15,000 images came from a public Kaggle dataset, split 12,750 for training and 2,250 for validation.</p>
+            <p>Every image was resized to 224 × 224 and normalized with the ImageNet mean and standard deviation. Random flips, rotations, and color jitter were added during training so the model would handle items at any angle and in different lighting. We trained with the Adam optimizer and cross-entropy loss for 10 epochs.</p>
+            <h3>Running it on the bin</h3>
+            <p>The Pi sends each photo to a FastAPI server (served with Uvicorn) that runs the model and returns the class and confidence. The Pi reads the result and drives the servos.</p>
+          </div>
+        </div>
+
+        <div class="split split-even">
+          <figure class="panel"><img src="images/ml-pipeline.png" width="1536" height="1024" alt="Pipeline diagram: data collection from a Kaggle dataset, ResNet-18 model, preprocessing to 224 by 224 with ImageNet normalization and random flips, training loop with Adam and cross-entropy loss, deployment with FastAPI, Picamera, and Uvicorn." loading="lazy"><figcaption>Training and deployment pipeline</figcaption></figure>
+          <figure class="panel panel-dark"><img src="images/training-log.png" width="1199" height="739" alt="Terminal output from train.py showing 15,000 samples, ImageNet-pretrained ResNet-18, and validation accuracy for epochs 1 through 8." loading="lazy"><figcaption>Raw training log</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="chemistry" aria-labelledby="chem-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="chem-h">Odor control and materials</h2>
+          <p>The chemical engineering side: keeping a closed bin clean, and picking what to build it from.</p>
+        </div>
+
+        <div class="split">
+          <figure class="panel panel-portrait"><img src="images/disinfectant.jpg" width="1500" height="2000" alt="A bottle of 91% isopropyl alcohol, a small amber bottle of scented oil, and a clear spray bottle on a windowsill." loading="lazy"><figcaption>91% isopropyl alcohol, scent oil, and the spray bottle for the diluted mix.</figcaption></figure>
+          <div class="prose">
+            <h3>Disinfectant</h3>
+            <p>We diluted 91% isopropyl alcohol to 70%. At 70%, the water in the mix slows evaporation and helps the alcohol get into cells and denature their proteins, so it disinfects better than the stronger stock. We tested several dilutions to balance cost against cleaning performance.</p>
+            <h3>Scent</h3>
+            <p>Our first try mixed fragrance into the alcohol. It evaporated with the alcohol within minutes and the smell didn't last. We switched to an oil-based scent, which stays in the enclosed bin much longer.</p>
+            <h3>Materials</h3>
+            <p>The intake chamber is polycarbonate. It holds up to moisture from wet waste and lets the camera see in. The frame and bins are wood, which was much faster to cut and change while we were still prototyping.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="build" aria-labelledby="build-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="build-h">Building it</h2>
+          <p>From the first CAD mock-up to a working demo.</p>
+        </div>
+
+        <ol class="log">
+          <li><figure><img src="images/cad-early.png" width="1304" height="1102" alt="Early CAD mock-up of the enclosure." loading="lazy"><figcaption>First CAD mock-up</figcaption></figure></li>
+          <li><figure><img src="images/build-enclosure.jpg" width="2000" height="1500" alt="Four team members assembling the unpainted plywood enclosure with the clear intake box on top." loading="lazy"><figcaption>Assembling the enclosure</figcaption></figure></li>
+          <li><figure><img src="images/build-planning.jpg" width="2000" height="1500" alt="Two team members reviewing plans on a tablet." loading="lazy"><figcaption>Working out the build plan</figcaption></figure></li>
+          <li><figure><img src="images/build-training.jpg" width="2000" height="1500" alt="Team member at a laptop and monitor running the training script." loading="lazy"><figcaption>Training the model</figcaption></figure></li>
+          <li><figure><img src="images/build-disinfectant.jpg" width="2000" height="1500" alt="Two team members measuring isopropyl alcohol into a spray bottle by a window." loading="lazy"><figcaption>Mixing the disinfectant</figcaption></figure></li>
+          <li><figure><img src="images/build-wiring.jpg" width="2000" height="1500" alt="Two team members wiring the camera and electronics into the painted lid." loading="lazy"><figcaption>Wiring the camera and sensors</figcaption></figure></li>
+        </ol>
+
+        <h3 class="sub" id="videos">Videos</h3>
+        <div class="videos">
+          <div class="video" data-yt="ufYvpXarw3I" data-title="Demo of the smart sorting trash can">
+            <button type="button" class="video-play" aria-label="Play video: demo"><img src="images/video-demo-1.jpg" width="1600" height="889" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></button>
+            <p>Demo</p>
+          </div>
+          <div class="video" data-yt="gevg3KoKo-Q" data-title="Second demo of the smart sorting trash can">
+            <button type="button" class="video-play" aria-label="Play video: second demo"><img src="images/video-demo-2.jpg" width="708" height="710" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></button>
+            <p>Second demo</p>
+          </div>
+          <div class="video" data-yt="ivGdk4SKYHw" data-title="Assembly timelapse">
+            <button type="button" class="video-play" aria-label="Play video: assembly timelapse"><img src="images/video-timelapse.jpg" width="1600" height="880" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></button>
+            <p>Assembly timelapse</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="team" aria-labelledby="team-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="team-h">Team</h2>
+          <p>Fourteen UC Berkeley students in chemical, mechanical, and civil engineering, EECS, and data science.</p>
+        </div>
+        <figure class="team-photo"><img src="images/team.jpg" width="2000" height="1333" alt="The fourteen team members in business attire in front of a campus building." loading="lazy"></figure>
+        <ul class="people">
+          <li><img src="images/team/aiden-reyes.jpg" alt="" loading="lazy" width="400" height="600"><b>Aiden Reyes</b><span>EECS, 2029</span></li>
+          <li><img src="images/team/angel-ramirez.jpg" alt="" loading="lazy" width="400" height="600"><b>Angel Ramirez</b><span>EECS, 2029</span></li>
+          <li><img src="images/team/boyi-hu.jpg" alt="" loading="lazy" width="400" height="600"><b>Boyi Hu</b><span>Mechanical Engineering, 2029</span></li>
+          <li><img src="images/team/deetya-srivatsavaya.jpg" alt="" loading="lazy" width="400" height="600"><b>Deetya Srivatsavaya</b><span>Mechanical Engineering, 2029</span></li>
+          <li><img src="images/team/genevieve-morales.jpg" alt="" loading="lazy" width="400" height="600"><b>Genevieve Morales</b><span>Chemical Engineering, 2029</span></li>
+          <li><img src="images/team/jerry-zhang.jpg" alt="" loading="lazy" width="400" height="600"><b>Jerry Zhang</b><span>Data Science + Statistics, 2028</span></li>
+          <li><img src="images/team/johnson-to.jpg" alt="" loading="lazy" width="400" height="600"><b>Johnson To</b><span>Chemical Engineering, 2029</span></li>
+          <li><img src="images/team/lana-moraleda.jpg" alt="" loading="lazy" width="400" height="600"><b>Lana Moraleda</b><span>Chemical Engineering, 2029</span></li>
+          <li><img src="images/team/megan-zhang.jpg" alt="" loading="lazy" width="400" height="600"><b>Megan Zhang</b><span>Data Science, 2029</span></li>
+          <li><img src="images/team/michael-nguyen.jpg" alt="" loading="lazy" width="400" height="600"><b>Michael Nguyen</b><span>Data Science, 2029</span></li>
+          <li><img src="images/team/natasha-nirmal.jpg" alt="" loading="lazy" width="400" height="600"><b>Natasha Nirmal</b><span>Data Science, 2028</span></li>
+          <li><img src="images/team/nick-deng.jpg" alt="" loading="lazy" width="400" height="600"><b>Nick Deng</b><span>EECS, 2029</span></li>
+          <li><img src="images/team/victor-nolasco.jpg" alt="" loading="lazy" width="400" height="600"><b>Victor Nolasco</b><span>Civil Engineering, 2029</span></li>
+          <li><img src="images/team/wyndham-woo.jpg" alt="" loading="lazy" width="400" height="600"><b>Wyndham Woo</b><span>Data Science, 2029</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-row">
+      <p>Smart Sorting Trash Can, UC Berkeley, spring 2026.</p>
+      <p>Site maintained by <a href="https://johnsonto07.github.io/">Johnson To</a>.</p>
     </div>
-  </section>
-
-  <footer class="footer">
-    <p>Smart Sorting Trash Can Project Website</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
